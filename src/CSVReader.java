@@ -21,8 +21,6 @@ public class CSVReader {
 
             fileReader = new BufferedReader(new FileReader(filename));
 
-            fileReader.readLine();
-
             while((line = fileReader.readLine()) != null) {
                 String[] tokens = line.split(COMMA_DELIMITER);
 
