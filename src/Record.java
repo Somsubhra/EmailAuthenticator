@@ -40,60 +40,78 @@ public class Record {
     }
 
     /**
-     * Getter and setter classes
+     * Getter methods
      */
-    public void setImapHost(String imapHost) {
-        this.imapHost = imapHost;
-    }
-
     public String getImapHost() {
         return this.imapHost;
-    }
-
-    public void setImapPort(int imapPort) {
-        this.imapPort = imapPort;
     }
 
     public int getImapPort() {
         return this.imapPort;
     }
 
-    public void setUseSSL(boolean useSSL) {
-        this.useSSL = useSSL;
-    }
-
     public boolean getUseSSL() {
         return this.useSSL;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getEmail() {
         return this.email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPassword() {
         return this.password;
     }
-
     /**
-     * End of Getter Setter methods
+     * End of getter methods
      */
 
     /**
-     * Convert record to String
+     * The Builder class
      */
-    public String toString() {
-        return this.imapHost + "," +
-                this.imapPort + "," +
-                this.useSSL + "," +
-                this.email + "," +
-                this.password + "\n";
+    public static class Builder {
+        private String imapHost;
+        private int imapPort;
+        private boolean useSSL;
+        private String email;
+        private String password;
+
+        public Builder(String imapHost) {
+            this.imapHost = imapHost;
+        }
+
+        public Builder port(int imapPort) {
+            this.imapPort = imapPort;
+            return this;
+        }
+
+        public Builder ssl(boolean useSSL) {
+            this.useSSL = useSSL;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Record build() {
+            return new Record(this);
+        }
+    }
+
+    /**
+     * Constructor for the Record
+     */
+    private Record(Builder builder) {
+        this.imapHost = builder.imapHost;
+        this.imapPort = builder.imapPort;
+        this.useSSL = builder.useSSL;
+        this.email = builder.email;
+        this.password = builder.password;
     }
 }

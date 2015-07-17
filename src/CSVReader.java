@@ -36,13 +36,19 @@ public class CSVReader {
 
                 if(tokens.length > 0) {
                     boolean ssl = false;
-                    if(tokens[SSL_IDX].equals("FALSE")) {
+                    if(tokens[SSL_IDX].toLowerCase().equals("false")) {
                         ssl = false;
-                    } else if(tokens[SSL_IDX].equals("TRUE")) {
+                    } else if(tokens[SSL_IDX].toLowerCase().equals("true")) {
                         ssl = true;
                     }
 
-                    Record record = new Record(tokens[HOST_IDX], Integer.parseInt(tokens[PORT_IDX]), ssl, tokens[EMAIL_IDX], tokens[PASS_IDX]);
+                    Record record = new Record.Builder(tokens[HOST_IDX])
+                            .port(Integer.parseInt(tokens[PORT_IDX]))
+                            .ssl(ssl)
+                            .email(tokens[EMAIL_IDX])
+                            .password(tokens[PASS_IDX])
+                            .build();
+
                     records.add(record);
                 }
             }

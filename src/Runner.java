@@ -13,14 +13,7 @@ public class Runner {
         ArrayList<Record> legalRecords = new ArrayList<>();
 
         for(Record record : records) {
-            Authenticator a = new Authenticator.Builder(record.getImapHost())
-                    .port(record.getImapPort())
-                    .ssl(record.getUseSSL())
-                    .email(record.getEmail())
-                    .password(record.getPassword())
-                    .build();
-
-            if(a.authenticate()) {
+            if(Authenticator.authenticate(record)) {
                 legalRecords.add(record);
             } else {
                 illegalRecords.add(record);
