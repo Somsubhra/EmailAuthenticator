@@ -102,17 +102,12 @@ public class Authenticator {
 
         Properties props = System.getProperties();
 
-        String sslStr = "false";
-
-        if(this.useSSL) {
-            sslStr = "true";
-        }
-
-        props.put("mail.imaps.auth.plain.disable", sslStr);
-
         try {
             Session session = Session.getDefaultInstance(props, null);
-            Store store = session.getStore("imaps");
+
+            String storeType = this.useSSL ? "imaps" : "imap";
+            Store store = session.getStore(storeType);
+
             store.connect(this.imapHost, this.imapPort, this.emailAddress, this.password);
             return true;
         } catch (Exception ex) {
