@@ -3,7 +3,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Read CSV File
+ */
 public class CSVReader {
+
+    /**
+     * Constant definitions
+     */
     private static final String COMMA_DELIMITER = ",";
 
     private static final int HOST_IDX = 0;
@@ -12,6 +19,9 @@ public class CSVReader {
     private static final int EMAIL_IDX = 3;
     private static final int PASS_IDX = 4;
 
+    /**
+     * Read CSV file
+     */
     public static ArrayList<Record> readCSV(String filename) {
         BufferedReader fileReader = null;
 

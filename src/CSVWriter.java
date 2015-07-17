@@ -2,11 +2,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Write to CSV file
+ */
 public class CSVWriter {
 
+    /**
+     * All constant definitions
+     */
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_DELIMITER = "\n";
 
+    /**
+     * Write to CSV file
+     */
     public static void writeCSV(String filename, ArrayList<Record> records) {
         FileWriter fileWriter = null;
 

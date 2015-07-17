@@ -3,12 +3,34 @@
  */
 public class Record {
 
+    /**
+     * IMAP Host
+     */
     private String imapHost;
+
+    /**
+     * IMAP port
+     */
     private int imapPort;
+
+    /**
+     * Use SSL for IMAP connection or not
+     */
     private boolean useSSL;
+
+    /**
+     * Email address
+     */
     private String email;
+
+    /**
+     * Password for email
+     */
     private String password;
 
+    /**
+     * Constructor for Record POJO
+     */
     public Record(String imapHost, int imapPort, boolean useSSL, String email, String password) {
         this.imapHost = imapHost;
         this.imapPort = imapPort;
@@ -17,6 +39,9 @@ public class Record {
         this.password = password;
     }
 
+    /**
+     * Getter and setter classes
+     */
     public void setImapHost(String imapHost) {
         this.imapHost = imapHost;
     }
@@ -57,6 +82,13 @@ public class Record {
         return this.password;
     }
 
+    /**
+     * End of Getter Setter methods
+     */
+
+    /**
+     * Convert record to String
+     */
     public String toString() {
         return this.imapHost + "," +
                 this.imapPort + "," +
